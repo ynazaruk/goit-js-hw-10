@@ -12,4 +12,4 @@ const fp = flatpickr(myInput, {
   },
 });
 
-let userSelectedDate = null;
+let userSelectedDate;
