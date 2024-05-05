@@ -11,3 +11,5 @@ const fp = flatpickr(myInput, {
     console.log(selectedDates[0]);
   },
 });
+
+let userSelectedDate = null;
