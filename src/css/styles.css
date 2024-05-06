@@ -70,6 +70,12 @@ button {
   background-color: #cfcfcf;
   border: 1px solid #cfcfcf;
 }
+
+.btn-active {
+  background-color: '#4E75FF';
+  color: '#FFFFFF';
+}
+
 .timer {
   display: flex;
   width: 346px;
