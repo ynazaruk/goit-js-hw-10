@@ -62,18 +62,19 @@ button {
   line-height: 24px;
   letter-spacing: 0.04em;
   text-align: center;
-  color: #989898;
   width: 75px;
   max-height: 40px;
   padding: 8px 16px 8px 16px;
   border-radius: 8px;
   background-color: #cfcfcf;
+  color: #989898;
   border: 1px solid #cfcfcf;
 }
 
 .btn-active {
-  background-color: '#4E75FF';
-  color: '#FFFFFF';
+  background-color: #4e75ff;
+  color: #ffffff;
+  border: 1px solid #4e75ff;
 }
 
 .timer {
