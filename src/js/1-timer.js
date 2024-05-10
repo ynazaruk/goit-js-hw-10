@@ -20,8 +20,10 @@ const options = {
       iziToast.error({
         title: 'Error',
         message: 'Please choose a date in the future',
+        position: 'topCenter',
       });
       startBtn.disabled = true;
+      startBtn.classList.remove(`btn-active`);
     } else {
       startBtn.disabled = false;
       startBtn.classList.add(`btn-active`);
@@ -35,15 +37,6 @@ startBtn.addEventListener('click', startTimer);
 
 function startTimer() {
   const userSelectedDate = new Date(myInput.value);
-  const currentDate = new Date();
-  if (userSelectedDate <= currentDate) {
-    iziToast.error({
-      title: 'Error',
-      message: 'Please choose a date in the future',
-      position: 'topCenter',
-    });
-    return;
-  }
   myInput.disabled = true;
   startBtn.disabled = true;
   startBtn.classList.remove(`btn-active`);
@@ -85,5 +78,9 @@ function convertMs(ms) {
 }
 
 function addLeadingZero(value) {
-  return value < 10 ? `0${value}` : value;
+  if (value < 10) {
+    return (value = `0${value}`);
+  } else {
+    return value;
+  }
 }
