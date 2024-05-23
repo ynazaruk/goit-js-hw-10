@@ -6,7 +6,7 @@ const form = document.querySelector('.form');
 form.addEventListener('submit', function (event) {
   event.preventDefault();
   const delayInput = document.querySelector('input[name="delay"]');
-  const delay = delayInput.value;
+  const delay = parseInt(delayInput.value);
 
   const stateInput = document.querySelector('input[name="state"]:checked');
   const state = stateInput ? stateInput.value : null;
@@ -20,20 +20,20 @@ form.addEventListener('submit', function (event) {
       }
     }, delay);
   });
-});
 
-promise
-  .then(value => {
-    iziToast.success({
-      title: 'Notification',
-      message: `✅ Fulfilled promise in ${delay}ms`,
-      position: 'topRight',
+  promise
+    .then(delay => {
+      iziToast.success({
+        title: 'Notification',
+        message: `✅ Fulfilled promise in ${delay}ms`,
+        position: 'topCenter',
+      });
+    })
+    .catch(delay => {
+      iziToast.error({
+        title: 'Notification',
+        message: `❌ Rejected promise in ${delay}ms`,
+        position: 'topCenter',
+      });
     });
-  })
-  .catch(value => {
-    iziToast.error({
-      title: 'Notification',
-      message: `❌ Rejected promise in ${delay}ms`,
-      position: 'topRight',
-    });
-  });
+});
