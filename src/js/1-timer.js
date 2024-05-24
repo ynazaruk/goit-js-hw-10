@@ -7,16 +7,17 @@ const myInput = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('button[data-start]');
 
 // console.log(startBTn);
-let userSelectedDate;
+let selectedDate;
 
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
+
   onClose(selectedDates) {
-    userSelectedDate = selectedDates[0];
-    if (userSelectedDate <= new Date()) {
+    selectedDate = selectedDates[0];
+    if (selectedDate <= new Date()) {
       iziToast.error({
         title: 'Error',
         message: 'Please choose a date in the future',
@@ -36,18 +37,17 @@ startBtn.disabled = true;
 startBtn.addEventListener('click', startTimer);
 
 function startTimer() {
-  const userSelectedDate = new Date(myInput.value);
   myInput.disabled = true;
   startBtn.disabled = true;
   startBtn.classList.remove(`btn-active`);
   const timerInterval = setInterval(
-    () => updateTimer(userSelectedDate, timerInterval),
+    () => updateTimer(selectedDate, timerInterval),
     1000
   );
   updateTimer(selectedDate, timerInterval);
 }
 function updateTimer(selectedDate, timerInterval) {
-  const diff = userSelectedDate - new Date();
+  const diff = selectedDate - new Date();
   if (diff <= 0) {
     clearInterval(timerInterval);
     myInput.disabled = false;
